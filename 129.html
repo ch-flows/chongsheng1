@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.3, maximum-scale=5.0, user-scalable=yes" />
+  <title>重生 · 英语</title>
+  <style>
+    /* 更新色调为更深的紫色并加入蓝色调 */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
+    
+    :root {
+      --primary: #6A4C93;
+      --primary-dark: #5A3C80;
+      --primary-light: #7B5BA6;
+      --secondary: #4A6FA5;
+      --accent: #48bb78;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f7fafc;
+      --bg-gradient: linear-gradient(135deg, #5A3C80 0%, #4A6FA5 50%, #6A4C93 100%);
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);
+      --shadow-xl: 0 20px 25px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.04);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    html {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      -webkit-overflow-scrolling: touch;
+      background: var(--bg-gradient);
+      background-attachment: fixed; 
+    }
+
+    body {
+      min-height: 100%;
+      width: 100%;
+      font-family: 'Arial', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: auto;
+      touch-action: manipulation;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+background-attachment: fixed;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 16px;
+      gap: 16px;
+      min-height: auto;
+      height: auto;
+      flex: 0 1 auto;
+      margin: auto;
+      position: relative;
+      touch-action: pan-y pinch-zoom;
+      transform-origin: center center;
+      transition: transform 0.3s ease;
+      background: transparent;
+    }
+
+    .header {
+      text-align: center;
+      width: 100%;
+      padding: 8px 0;
+      margin-bottom: 4px;
+      transition: var(--transition);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      font-family: 'Noto Serif SC', serif;
+    }
+
+    .motto {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.9);
+      font-family: 'Noto Serif SC', serif;
+      line-height: 1.4;
+    }
+
+    .motto-english {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      font-family: 'Arial', sans-serif;
+      margin-top: 2px;
+    }
+
+    .card-container {
+      width: 100%;
+      height: 220px;
+      margin: 20px 0;
+      position: relative;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      /* 完全移除底部大阴影条带，使用更轻柔的阴影 */
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: var(--transition);
+    }
+
+    .card:active {
+      transform: translateY(-2px) scale(0.995);
+    }
+
+    .card-text {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 1.5;
+        color: var(--text-primary);
+        font-family: 'Noto Serif SC', serif;
+        word-break: break-word;
+        padding: 0 12px;
+        text-align: center;
+        text-align-last: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        white-space: pre-line;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        word-spacing: 0.5px;
+        letter-spacing: 0.2px;
+    }
+
+    .card-english {
+        font-family: 'Arial', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        letter-spacing: 0.2px;
+        word-spacing: 1px;
+        line-height: 1.4;
+    }
+
+    .star {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 20px;
+      color: #e2e8f0;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 10;
+      padding: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-md);
+      width: 32px;
+      height: 32px;
+      display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .star:active {
+      transform: scale(1.2);
+    }
+
+    .star.active {
+      color: var(--secondary);
+      filter: drop-shadow(0 0 12px rgba(74, 111, 165, 0.5));
+      animation: starPulse 2s infinite;
+    }
+
+    @keyframes starPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .progress-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 16px auto;
+      padding: 0 16px;
+      position: relative;
+    }
+
+    .progress-text {
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 400;
+      margin-bottom: 8px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .progress-bar:active {
+      transform: scaleY(1.3);
+    }
+
+    .progress-bar:active .progress-fill {
+      background: linear-gradient(90deg, var(--accent) 0%, #fff 100%);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-light) 0%, white 100%);
+      border-radius: 4px;
+      transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+      animation: shimmer 2.5s infinite;
+    }
+
+    .progress-slider-container {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 44px; /* 增大触摸区域 */
+      transform: translateY(-50%);
+      cursor: pointer;
+      z-index: 5;
+      touch-action: none;
+    }
+
+    .progress-slider {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 16px; /* 左右更短 */
+      height: 24px; /* 上下更宽 */
+      background: white;
+      border: 2px solid var(--primary);
+      border-radius: 8px; /* 调整为椭圆形状 */
+      transform: translate(-50%, -50%);
+      box-shadow: 
+        0 2px 6px rgba(0,0,0,0.3),
+        0 0 0 0px rgba(106, 76, 147, 0);
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      touch-action: none;
+      overflow: hidden;
+    }
+
+    .progress-slider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(106, 76, 147, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s;
+    }
+
+    .progress-slider:active::before {
+      width: 40px;
+      height: 40px;
+    }
+
+    .progress-slider.active {
+      transform: translate(-50%, -50%) scale(1.3);
+      border-color: var(--accent);
+      box-shadow: 
+        0 4px 12px rgba(0,0,0,0.4),
+        0 0 0 8px rgba(106, 76, 147, 0.2);
+    }
+
+    .progress-slider.dragging {
+      transform: translate(-50%, -50%) scale(1.4);
+      border-color: var(--accent);
+      box-shadow: 
+        0 6px 16px rgba(0,0,0,0.5),
+        0 0 0 12px rgba(74, 111, 165, 0.15);
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .controls {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 0 16px;
+      margin-top: 20px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn {
+      height: 52px;
+      min-width: 0;
+      flex: 1;
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(15px);
+      color: white;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+      padding: 0 8px;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.1) 100%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .btn:active::before {
+      opacity: 1;
+    }
+
+    .btn:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+
+    .btn-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .btn-icon {
+      font-size: 18px;
+      transition: var(--transition);
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+      font-weight: 400;
+    }
+
+    .auto-play-icon {
+      font-size: 16px;
+      letter-spacing: -2px;
+    }
+
+    .pause-icon {
+      font-size: 18px;
+      font-weight: 300;
+    }
+
+    .btn-primary {
+      background: rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-auto.active {
+      background: rgba(255, 255, 255, 0.35);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .reset-icon-svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.85);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .zoom-controls {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      display: flex;
+      flex-direction: row;
+      gap: 2px;
+      z-index: 1000;
+    }
+
+    .zoom-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-family: 'Arial', sans-serif;
+    }
+
+    .zoom-btn:active {
+      transform: scale(0.9);
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .zoom-indicator {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 6px 10px;
+      border-radius: 16px;
+      font-size: 12px;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      font-family: 'Arial', sans-serif;
+    }
+
+    .dropdown {
+      position: fixed;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      box-shadow: var(--shadow-xl);
+      z-index: 1000;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: none;
+      min-width: 60px;
+      width: 60px;
+    }
+
+    .dropdown-options {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .dropdown-option {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(106, 76, 147, 0.08);
+      color: #6A4C93 !important;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .dropdown-option:hover {
+      background: #6A4C93 !important;
+      color: white !important;
+    }
+
+    .dropdown-option.active {
+      background: #6A4C93 !important;
+      color: white !important;
+    }
+
+    @media (max-width: 360px) {
+      .app-container {
+        padding: 0 12px;
+      }
+      
+      .logo {
+        font-size: 24px;
+      }
+      
+      .motto {
+        font-size: 12px;
+      }
+      
+      .motto-english {
+        font-size: 11px;
+      }
+      
+      .card-container {
+        height: 200px;
+      }
+      
+      .card-text {
+            font-size: 20px;
+            line-height: 1.4;
+            padding: 0 10px;
+            word-spacing: 0.3px;
+            letter-spacing: 0.1px;
+        }
+        
+        .card-english {
+            word-spacing: 0.8px;
+            line-height: 1.3;
+        }
+      
+      .btn {
+        height: 48px;
+      }
+      
+      .dropdown {
+        min-width: 55px;
+        width: 55px;
+      }
+      
+      .dropdown-option {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+      
+      .zoom-controls {
+        bottom: 10px;
+        right: 10px;
+        gap: 2px;
+      }
+      
+      .zoom-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+      }
+      
+      .zoom-indicator {
+        top: 10px;
+        right: 10px;
+        font-size: 11px;
+        padding: 5px 8px;
+      }
+      
+      .reset-icon-svg {
+        width: 20px;
+        height: 20px;
+      }
+      
+      .progress-slider {
+        width: 14px; /* 小屏幕下也调整 */
+        height: 20px;
+      }
+      
+      .progress-slider-container {
+        height: 40px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .card-container {
+        height: 260px;
+      }
+      
+      .card-text {
+            font-size: 24px;
+            line-height: 1.6;
+            word-spacing: 0.6px;
+            letter-spacing: 0.3px;
+        }
+        
+        .card-english {
+            word-spacing: 1.2px;
+            line-height: 1.5;
+        }
+      
+      .btn {
+        height: 56px;
+      }
+      
+      .zoom-controls {
+        bottom: 20px;
+        right: 20px;
+        gap: 2px;
+      }
+      
+      .zoom-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      
+      .zoom-indicator {
+        top: 20px;
+        right: 20px;
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+      
+      .reset-icon-svg {
+        width: 26px;
+        height: 26px;
+      }
+      
+      .progress-slider {
+        width: 18px; /* 大屏幕下也调整 */
+        height: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 缩放指示器 -->
+  <div class="zoom-indicator" id="zoomIndicator">100%</div>
+  
+  <!-- 缩放控制按钮 -->
+  <div class="zoom-controls">
+    <button class="zoom-btn" id="zoomOutBtn">-</button>
+    <button class="zoom-btn" id="zoomInBtn">+</button>
+  </div>
+  
+  <div class="app-container" id="appContainer">
+    <div class="header">
+      <div class="logo">重生 · 英语</div>
+      <div class="motto">不是背，是让它长进气息，成为你自己的呼吸。</div>
+      <div class="motto-english">Not memorized. Grown into your breath.</div>
+    </div>
+    
+    <div class="card-container">
+      <div class="card" id="card">
+        <div class="star" id="star">★</div>
+        <div class="card-text" id="cardText">你行的</div>
+      </div>
+    </div>
+    
+    <div class="progress-container">
+      <div class="progress-text" id="progress">1 / 261</div>
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-fill" id="progressFill" style="width: 0.38%"></div>
+        <div class="progress-slider-container" id="progressSliderContainer">
+          <div class="progress-slider" id="progressSlider"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <div class="btn-row">
+        <button class="btn" id="resetBtn" title="回到第一张">
+          <div class="btn-content">
+            <svg class="reset-icon-svg" viewBox="0 0 24 24">
+              <line x1="4" y1="7" x2="4" y2="17" />
+              <polygon points="12,7 12,17 7,12" fill="none" />
+              <polygon points="19,7 19,17 14,12" fill="none" />
+            </svg>
+          </div>
+        </button>
+        <button class="btn" id="shuffleBtn" title="随机排序">
+          <div class="btn-content">
+            <span class="btn-icon">⇄</span>
+          </div>
+        </button>
+        <button class="btn" id="starBtn" title="收藏">
+          <div class="btn-content">
+            <span class="btn-icon">★</span>
+          </div>
+        </button>
+        <button class="btn" id="bookmarksBtn" title="查看收藏">
+          <div class="btn-content">
+            <span class="btn-icon">🔖</span>
+          </div>
+        </button>
+      </div>
+      
+      <div class="btn-row">
+        <button class="btn btn-auto" id="autoPlayFrontBtn" title="自动播放正面">
+          <div class="btn-content">
+            <span class="btn-icon auto-play-icon">▷</span>
+          </div>
+        </button>
+        <button class="btn btn-auto" id="autoPlayBothBtn" title="自动播放正反面">
+          <div class="btn-content">
+            <span class="btn-icon auto-play-icon">▷▷</span>
+          </div>
+        </button>
+        <button class="btn btn-primary" id="prevBtn" title="上一张">
+          <div class="btn-content">
+            <span class="btn-icon">←</span>
+          </div>
+        </button>
+        <button class="btn btn-primary" id="nextBtn" title="下一张">
+          <div class="btn-content">
+            <span class="btn-icon">→</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 下拉菜单 -->
+  <div class="dropdown" id="speedDropdown">
+    <div class="dropdown-options">
+      <button class="dropdown-option" data-speed="1000">1<span style="font-size: 10px; opacity: 0.8;">〞</span></button>
+      <button class="dropdown-option" data-speed="2000">2<span style="font-size: 10px; opacity: 0.8;">〞</span></button>
+      <button class="dropdown-option" data-speed="3000">3<span style="font-size: 10px; opacity: 0.8;">〞</span></button>
+      <button class="dropdown-option" data-speed="4000">4<span style="font-size: 10px; opacity: 0.8;">〞</span></button>
+      <button class="dropdown-option" data-speed="5000">5<span style="font-size: 10px; opacity: 0.8;">〞</span></button>
+    </div>
+  </div>
+  
+  <div class="dropdown" id="translationDropdown">
+    <div class="dropdown-options">
+      <button class="dropdown-option" data-front-speed="1000">1<span style="font-size: 10px; opacity: 0.8;">〞</span></button>
+      <button class="dropdown-option" data-front-speed="2000">2<span style="font-size: 10px; opacity: 0.8;">〞</span></button>
+      <button class="dropdown-option" data-front-speed="3000">3<span style="font-size: 10px; opacity: 0.8;">〞</span></button>
+      <button class="dropdown-option" data-front-speed="4000">4<span style="font-size: 10px; opacity: 0.8;">〞</span></button>
+      <button class="dropdown-option" data-front-speed="5000">5<span style="font-size: 10px; opacity: 0.8;">〞</span></button>
+    </div>
+  </div>
+
+  <script>
+    // 完整的261个英语短语数据
+    const englishPhrases = [
+      ["你行的", "you've got this"],
+      ["没那么糟糕", "it's not that bad"],
+      ["别太在意", "don't take it to heart"],
+      ["别太较真", "don't take it too seriously"],
+      ["这完全可以理解", "it's completely understandable"],
+      ["这有道理哈", "that makes sense"],
+      ["没那个必要", "it's not necessary"],
+      ["顺其自然吧", "just let it be"],
+      ["是时候放下过去了", "it's time to move on"],
+      ["计划赶不上变化", "things change"],
+      ["大概是这样", "something like that"],
+      ["那得看具体情况", "it depends"],
+      ["如果可能的话", "if possible"],
+      ["办法总比问题多", "there's always a way"],
+      ["千万别小看这个方法", "never underestimate this method"],
+      ["别不当回事", "don't take it lightly"],
+      ["别逼我发火", "don't test my patience"],
+      ["但下不为例", "but don't let it happen again"],
+      ["不要打扰到别人", "don't disturb others"],
+      ["我明白你的意思", "I see what you mean"],
+      ["我不是想要批评你", "I'm not trying to criticize you"],
+      ["我其实不是很清楚", "I'm not really sure yet"],
+      ["真的有用吗", "does it really work"],
+      ["真的值得吗", "is it really worth it"],
+      ["这是行不通的", "it won't work"],
+      ["他肯定是在打什么主意", "he must be up to something"],
+      ["他们没按好心", "they're up to no good"],
+      ["这不怪别人", "no one else is to blame"],
+      ["我完全赞同", "I'm all for it"],
+      ["那需要勇气", "that took courage"],
+      ["比我预期的要好", "better than I expected"],
+      ["这是一个很高的评价", "that's a really high compliment"],
+      ["你有两下子哈", "you've got some skills"],
+      ["不要给他泼冷水", "don't rain on his parade"],
+      ["都交给我吧", "leave it all to me"],
+      ["我有一个条件", "I have one condition"],
+      ["这个座位有人坐吗", "is this seat taken"],
+      ["都到齐了吗", "are we all here"],
+      ["我知道你能处理好这事", "I know you can handle this"],
+      ["你别误会", "don't get me wrong"],
+      ["那一定很难熬", "that must be really tough"],
+      ["我一直没弄明白", "I still can't figure it out"],
+      ["就是爱面子呗", "it's just his vanity"],
+      ["话虽如此", "having said that"],
+      ["这是把双刃剑", "it's a double-edged sword"],
+      ["这次就算了", "I'll let it go this time"],
+      ["不要有侥幸心理", "don't think you can get away with it"],
+      ["我只知道个大概", "I only know roughly"],
+      ["我知道你很用心", "I know you really care"],
+      ["这对我很重要", "it means a lot to me"],
+      ["我很感激", "I really appreciate that"],
+      ["好过没有", "better than nothing"],
+      ["我无所谓了", "I don't mind"],
+      ["你决定吧", "up to you"],
+      ["你能站在我的立场想吗", "can you put yourself in my shoes"],
+      ["别急着下结论", "don't jump to conclusions"],
+      ["只是片面的说法", "just one side of it"],
+      ["事情的来龙去脉", "the whole story"],
+      ["更侧重于质量", "more focused on quality"],
+      ["这招挺管用", "this trick works pretty well"],
+      ["在截止日前", "before the deadline"],
+      ["问题可能会恶化", "the problem could get worse"],
+      ["可能会出现副作用", "side effects may occur"],
+      ["不要胡乱回答", "don't give random answers"],
+      ["别拿他开玩笑", "don't make fun of him"],
+      ["他只想着自己", "only cares about himself"],
+      ["他睁一只眼闭一只眼", "he turns a blind eye"],
+      ["这事别指望他", "don't count on him for this"],
+      ["估计出啥事儿了", "reckon something's up"],
+      ["别上钩", "don't fall for it"],
+      ["太过纠结于细节", "too focused on small details"],
+      ["忽略了全局", "not seeing the big picture"],
+      ["他思路清晰", "he's very logical"],
+      ["他总能讲出道理来", "he always makes sense"],
+      ["我没有异议", "I have no objection"],
+      ["这并没有那么难", "it's not that difficult"],
+      ["简单说几句", "just a few quick words"],
+      ["和以前相比", "compared to before"],
+      ["差点没认出你来", "almost didn't recognize you"],
+      ["他时间多的是", "he's got plenty of time"],
+      ["恢复了正常", "returned to normal"],
+      ["他假装没事", "he pretended to be fine"],
+      ["她泪流满面", "she burst into tears"],
+      ["别这么说", "don't say that"],
+      ["你说是就是吧", "if you say so"],
+      ["从来没听说过", "never heard of it"],
+      ["还疼吗", "does it still hurt"],
+      ["毫无疑问", "without a doubt"],
+      ["如果一切顺利的话", "if all goes well"],
+      ["你好大的胆子", "how dare you"],
+      ["你弄疼我了", "you're hurting me"],
+      ["够了，别再说了", "I've heard enough"],
+      ["就在当天下午", "that very afternoon"],
+      ["过来吃点", "come and have some"],
+      ["刚开始很难", "it was hard at first"],
+      ["你看起来心事重重", "you look worried"],
+      ["最好别冒险", "better not to risk it"],
+      ["听起来有点乱", "it sounds confusing"],
+      ["别管细节了", "forget the details"],
+      ["理智一点吧", "please be sensible"],
+      ["这可是你说的", "you said it yourself"],
+      ["专注于你的目标", "stay focused on your goals"],
+      ["那就含糊点回答", "then just keep it vague"],
+      ["我完全没有察觉", "I didn't notice at all"],
+      ["很容易被误导", "can be easily misled"],
+      ["说够了吧", "enough said"],
+      ["好险啊", "that was close"],
+      ["跟大家说一声", "keep you all in the loop"],
+      ["真的没什么大不了的", "it's no big deal"],
+      ["结果后悔了", "ended up regretting it"],
+      ["你反应过度了", "you're overreacting"],
+      ["给我一点时间", "give me a second"],
+      ["我来处理", "let me handle it"],
+      ["自取其辱", "make a fool of yourself"],
+      ["言行不一", "say one thing and do another"],
+      ["我很期待", "I'm looking forward to it"],
+      ["问题不在这里", "this isn't the issue"],
+      ["还没弄好呢", "it's not ready yet"],
+      ["那只是你的偏见", "that's just your bias"],
+      ["还在考虑", "still thinking about it"],
+      ["这个也需要回答", "this one also needs a response"],
+      ["失败没什么大不了的", "failure is no big deal"],
+      ["也是要不得的", "that's also unacceptable"],
+      ["你太过理性了", "you're being too logical"],
+      ["你又钻牛角尖了", "here you go overthinking again"],
+      ["不妨一试", "why not give it a try"],
+      ["这也太严了吧", "that's way too strict"],
+      ["太不近人情了", "that's so inconsiderate"],
+      ["通融一下呗", "cut me some slack"],
+      ["聊得很投机", "we really hit it off"],
+      ["这个选择是最明智的", "this is the wisest choice"],
+      ["生活充满变数", "life is full of uncertainties"],
+      ["生活总有起伏", "life has its ups and downs"],
+      ["机会稍纵即逝", "opportunities come and go"],
+      ["你很有上进心", "you are highly motivated"],
+      ["没有人天生就厉害", "no one is born great"],
+      ["一切皆有可能", "anything is possible"],
+      ["你的努力不会白费", "your hard work will pay off"],
+      ["挑战你的极限", "test your limits"],
+      ["需要有人站出来", "need someone to step up"],
+      ["你怎么不吃", "how come you're not eating"],
+      ["保持开放心态", "maintain an open mind"],
+      ["乍一听很奇怪", "it sounds weird at first"],
+      ["我才意识到", "I just realized"],
+      ["不太 / 算不上", "not really"],
+      ["你完全跑题了", "you're way off topic"],
+      ["我不信", "I'm not buying it"],
+      ["出发点是好的", "the intention was good"],
+      ["我没问题", "that works for me"],
+      ["那件事我做不到", "that's not something I can do"],
+      ["这事我稍后再答复你", "I'll get back to you on that"],
+      ["这坚决不行", "that's a hard no"],
+      ["别慌", "let's not panic"],
+      ["在我看来", "from my perspective"],
+      ["那不是我喜欢的", "that's not my cup of tea"],
+      ["说起来容易做起来难", "easier said than done"],
+      ["慢慢来，不着急", "take your time"],
+      ["我在这儿支持你", "I'm here for you"],
+      ["你不是一个人面对", "you're not alone in this"],
+      ["你可以这样想", "think of it this way"],
+      ["这是颠覆性的", "that's a game-changer"],
+      ["我们换个角度看看", "let's look at this differently"],
+      ["这话有一定道理", "there's some truth in that"],
+      ["我理解你的出发点", "I see where you're coming from"],
+      ["你越过了我的底线", "you crossed my boundary"],
+      ["我还是不要了吧", "I'd rather not"],
+      ["那不是我的责任", "that's not on me"],
+      ["我有权说\"不\"", "I have every right to say no"],
+      ["别道德绑架我", "don't guilt-trip me"],
+      ["请别再提这件事了", "please drop it"],
+      ["我不会改变主意", "I'm not changing my mind"],
+      ["这不符合我的原则", "that goes against my values"],
+      ["我拒绝参与", "I'm opting out"],
+      ["别试探我的底线", "don't test my limits"],
+      ["我不接受这种语气", "I won't accept that tone"],
+      ["我不想卷入这件事", "I don't want to get involved"],
+      ["这对我是一种冒犯", "that feels offensive to me"],
+      ["这不是我能妥协的地方", "this is non-negotiable for me"],
+      ["我不会容忍这种行为", "I won't tolerate this behavior"],
+      ["我洗耳恭听", "I'm all ears"],
+      ["需要我做点什么吗", "is there anything I can do"],
+      ["别太苛刻地对待自己", "don't be so hard on yourself"],
+      ["你的努力我看到了", "I see how hard you're trying"],
+      ["这不是你的错", "this isn't your fault"],
+      ["我们一起想办法", "we'll figure it out together"],
+      ["我相信你的判断", "I trust your judgment"],
+      ["在人群中脱颖而出", "stand out from the crowd"],
+      ["我为你感到骄傲", "I'm proud of you"],
+      ["权衡利弊之后", "after weighing the pros and cons"],
+      ["真正重要的是", "what truly matters is"],
+      ["不过，我想补充一点", "however, I'd like to add"],
+      ["从另一个角度看", "from another angle"],
+      ["我们来探讨这个想法", "let's explore that idea"],
+      ["我换个说法", "let me rephrase that"],
+      ["这不是针对你", "it's not personal"],
+      ["让我们先澄清一下事实", "let's clarify the facts first"],
+      ["我同意你的部分观点", "I agree with part of what you're saying"],
+      ["这事有点复杂", "it's kind of complicated"],
+      ["我还没想好呢", "I'm not sure yet"],
+      ["让我想想", "let me think about that"],
+      ["我是不是应该", "am I supposed to"],
+      ["你为什么", "why are you"],
+      ["你怎么", "how come you"],
+      ["你真的这么觉得吗", "do you really feel that way"],
+      ["我是不是哪里做错了", "did I do something wrong"],
+      ["这真的有必要吗", "is this really necessary"],
+      ["我不想谈论这个", "I'd rather not get into it"],
+      ["我不完全同意", "I don't fully agree"],
+      ["这个假设可能不成立", "that assumption might not hold"],
+      ["这和实际情况有些出入", "that doesn't quite match reality"],
+      ["这个类比不太恰当", "that analogy doesn't quite work"],
+      ["不能一概而论", "it depends"],
+      ["事情没那么简单", "it's not black and white"],
+      ["要辩证地看", "look at both sides"],
+      ["真正的问题是什么", "what's the real issue here"],
+      ["让我们回到正题吧", "let's get back on track"],
+      ["详细阐述你的观点", "elaborate on your point"],
+      ["不要给我扣帽子", "don't label me"],
+      ["我的回答依然是\"不\"", "my answer is still no"],
+      ["这没有商量余地", "this is non-negotiable"],
+      ["我们的目标是一致的", "we're on the same page about the goal"],
+      ["重点不是谁对谁错，而是怎么解决", "it's not about who's right—it's about how to fix it"],
+      ["聚焦解决方案，而非指责", "let's focus on solutions, not blame"],
+      ["我们分步骤来", "let's take it step by step"],
+      ["一步一步来", "one step at a time"],
+      ["尽管遇到了挫折", "despite the setback"],
+      ["犯错是学习的一部分", "mistakes are part of learning"],
+      ["从失败中吸取教训", "learn from failure"],
+      ["失败并不可怕", "failure isn't scary"],
+      ["事教人一次足矣", "one lesson was enough"],
+      ["这是我的责任", "that's on me"],
+      ["如果不采取措施", "if nothing is done"],
+      ["我也做不了什么", "there's nothing I can do"],
+      ["每一秒钟都很关键", "every second matters"],
+      ["专注你能掌控的", "focus on what you can control"],
+      ["捍卫你的底线", "stand up for your boundaries"],
+      ["而不是急于争辩", "instead of rushing to argue"],
+      ["从不往心里去", "never takes it personally"],
+      ["我感到不堪重负", "I'm feeling overwhelmed"],
+      ["我需要暂停一下", "I need to pause for a moment"],
+      ["休息也是工作的一部分", "rest is part of the work"],
+      ["听起来真的很难", "that sounds really tough"],
+      ["很难感同身受", "it's hard to truly understand"],
+      ["时间是最好的良药", "time heals all wounds"],
+      ["人比人气死人", "comparison is the thief of joy"],
+      ["尽量多看他的长处", "focus on his strengths"],
+      ["抽空陪陪家人", "make time for your family"],
+      ["珍惜生活中的小确幸", "cherish the little joys in life"],
+      ["每一天都是新的开始", "every day is a fresh start"],
+      ["今天就到这儿吧", "let's call it a day"],
+      ["这才对嘛", "that's the spirit"],
+      ["吐到垃圾桶里", "spit that in the bin"],
+      ["我总是觉得", "I always think"],
+      ["我们来理顺一下吧", "let's get this sorted out"],
+      ["你怎么可以这样", "how could you do this"],
+      ["他为什么会这样呢", "why would he do that"],
+      ["没有", "don't have"],
+      ["不知道", "don't know"],
+      ["不要了", "don't want"],
+      ["不用了", "no need"],
+      ["不用谢", "no problem"]
+    ];
+
+    // 专业级状态管理
+    class AppState {
+      constructor() {
+        this.currentIndex = 0;
+        this.isChinese = true;
+        this.starred = new Set();
+        this.isViewingStarred = false;
+        this.originalOrder = [...englishPhrases];
+        this.currentOrder = [...englishPhrases];
+        this.autoPlay = {
+          enabled: false,
+          timer: null,
+          frontSpeed: 2000,
+          backSpeed: 1000,
+          mode: 'front',
+          isFirstCycle: true
+        };
+        this.zoomLevel = 1;
+      }
+      
+      reset() {
+        this.currentIndex = 0;
+        this.isChinese = true;
+        this.isViewingStarred = false;
+        this.currentOrder = [...this.originalOrder];
+        this.autoPlay.isFirstCycle = true;
+      }
+    }
+
+    const state = new AppState();
+
+    // 自动播放引擎
+    const autoPlayEngine = {
+      timer: null,
+      isRunning: false,
+      cycleCount: 0,
+      
+      start(frontSpeed, mode) {
+        this.stop();
+        
+        state.currentIndex = 0;
+        state.isChinese = true;
+        updateCard();
+        
+        state.autoPlay.enabled = true;
+        state.autoPlay.frontSpeed = frontSpeed;
+        state.autoPlay.mode = mode;
+        state.autoPlay.isFirstCycle = true;
+        this.cycleCount = 0;
+        this.isRunning = true;
+        
+        setTimeout(() => {
+          this.executeCycle();
+        }, mode === 'front' ? frontSpeed : 100);
+      },
+      
+      stop() {
+        this.isRunning = false;
+        if (this.timer) {
+          clearTimeout(this.timer);
+          this.timer = null;
+        }
+        state.autoPlay.enabled = false;
+        state.autoPlay.isFirstCycle = true;
+      },
+      
+      executeCycle() {
+        if (!this.isRunning) return;
+        
+        const delay = this.calculateDelay();
+        
+        this.timer = setTimeout(() => {
+          if (!this.isRunning) return;
+          
+          this.performAction();
+          this.cycleCount++;
+          this.executeCycle();
+        }, delay);
+      },
+      
+      calculateDelay() {
+        if (state.autoPlay.isFirstCycle) {
+          state.autoPlay.isFirstCycle = false;
+          return state.autoPlay.mode === 'front' ? state.autoPlay.frontSpeed : state.autoPlay.frontSpeed;
+        }
+        
+        if (state.autoPlay.mode === 'front') {
+          return state.autoPlay.frontSpeed;
+        } else {
+          return state.isChinese ? state.autoPlay.frontSpeed : state.autoPlay.backSpeed;
+        }
+      },
+      
+      performAction() {
+        if (state.autoPlay.mode === 'front') {
+          this.handleFrontMode();
+        } else {
+          this.handleBothMode();
+        }
+      },
+      
+      handleFrontMode() {
+        this.advanceToNextCard();
+        state.isChinese = true;
+        updateCard();
+      },
+      
+      handleBothMode() {
+        if (state.isChinese) {
+          state.isChinese = false;
+          updateCard();
+        } else {
+          this.advanceToNextCard();
+          state.isChinese = true;
+          updateCard();
+        }
+      },
+      
+      advanceToNextCard() {
+        if (state.isViewingStarred && state.starred.size > 0) {
+          const starredArray = Array.from(state.starred);
+          const currentIndexInStarred = starredArray.indexOf(state.currentIndex);
+          const nextIndexInStarred = (currentIndexInStarred + 1) % starredArray.length;
+          state.currentIndex = starredArray[nextIndexInStarred];
+        } else {
+          state.currentIndex = (state.currentIndex + 1) % state.currentOrder.length;
+        }
+      }
+    };
+
+    // 优化的智能分行算法 - 更加保守
+    function formatCardText(text) {
+      // 如果文本很短，不需要分行
+      if (text.length <= 20) {
+        return text;
+      }
+      
+      const words = text.split(' ');
+      
+      // 如果单词数很少，也不需要分行
+      if (words.length <= 4) {
+        return text;
+      }
+      
+      // 计算最佳分行点
+      const midPoint = Math.ceil(words.length / 2);
+      
+      // 尝试找到最均衡的分行点
+      let bestSplitIndex = midPoint;
+      let minDifference = Math.abs(midPoint - (words.length - midPoint));
+      
+      // 检查周围几个位置，找到最均衡的分行
+      for (let i = Math.max(1, midPoint - 2); i <= Math.min(words.length - 1, midPoint + 2); i++) {
+        const firstLineLength = words.slice(0, i).join(' ').length;
+        const secondLineLength = words.slice(i).join(' ').length;
+        const difference = Math.abs(firstLineLength - secondLineLength);
+        
+        if (difference < minDifference) {
+          minDifference = difference;
+          bestSplitIndex = i;
+        }
+      }
+      
+      // 如果分行后两行长度差异仍然很大，考虑不分行
+      const firstLine = words.slice(0, bestSplitIndex).join(' ');
+      const secondLine = words.slice(bestSplitIndex).join(' ');
+      
+      // 更严格的条件：只有当两行长度差异不大且每行都有足够单词时才分行
+      if (Math.abs(firstLine.length - secondLine.length) > 8 || 
+          firstLine.split(' ').length < 2 || 
+          secondLine.split(' ').length < 2) {
+        return text; // 差异太大或某行单词太少，不分行
+      }
+      
+      return firstLine + '\n' + secondLine;
+    }
+
+    // 卡片显示更新 - 使用优化的智能分行
+    function updateCard() {
+      const currentPhrases = state.isViewingStarred ? 
+        Array.from(state.starred).map(index => state.currentOrder[index]) : 
+        state.currentOrder;
+      
+      const phrase = currentPhrases[state.currentIndex] || state.currentOrder[0];
+      const text = state.isChinese ? phrase[0] : phrase[1];
+      const cardText = document.getElementById('cardText');
+      
+      // 使用优化的智能分行算法格式化文本
+      const formattedText = formatCardText(text);
+      cardText.textContent = formattedText;
+      
+      if (!state.isChinese) {
+        cardText.classList.add('card-english');
+      } else {
+        cardText.classList.remove('card-english');
+      }
+      
+      let totalPhrases, currentPosition;
+      
+      if (state.isViewingStarred) {
+        totalPhrases = state.starred.size;
+        const starredArray = Array.from(state.starred);
+        currentPosition = starredArray.indexOf(state.currentIndex) + 1;
+        if (currentPosition === 0) currentPosition = 1;
+      } else {
+        totalPhrases = state.currentOrder.length;
+        currentPosition = state.currentIndex + 1;
+      }
+      
+      document.getElementById('progress').textContent = `${currentPosition} / ${totalPhrases}`;
+      document.getElementById('progressFill').style.width = `${(currentPosition / totalPhrases) * 100}%`;
+      
+      const star = document.getElementById('star');
+      if (state.starred.has(state.currentIndex)) {
+        star.classList.add('active');
+      } else {
+        star.classList.remove('active');
+      }
+      
+      // 更新滑块位置
+      updateSliderPosition();
+    }
+
+    // 更新滑块位置
+    function updateSliderPosition() {
+      const slider = document.getElementById('progressSlider');
+      const progressBar = document.getElementById('progressBar');
+      const progressBarRect = progressBar.getBoundingClientRect();
+      const progressBarWidth = progressBarRect.width;
+      
+      let totalPhrases, currentPosition;
+      
+      if (state.isViewingStarred) {
+        totalPhrases = state.starred.size;
+        const starredArray = Array.from(state.starred);
+        currentPosition = starredArray.indexOf(state.currentIndex) + 1;
+        if (currentPosition === 0) currentPosition = 1;
+      } else {
+        totalPhrases = state.currentOrder.length;
+        currentPosition = state.currentIndex + 1;
+      }
+      
+      const percentage = (currentPosition - 1) / (totalPhrases - 1);
+      const sliderPosition = percentage * progressBarWidth;
+      
+      slider.style.left = `${sliderPosition}px`;
+    }
+
+    // 导航功能
+    function nextCard() {
+      if (state.isChinese) {
+        state.isChinese = false;
+      } else {
+        if (state.isViewingStarred && state.starred.size > 0) {
+          const starredArray = Array.from(state.starred);
+          const currentIndexInStarred = starredArray.indexOf(state.currentIndex);
+          const nextIndexInStarred = (currentIndexInStarred + 1) % starredArray.length;
+          state.currentIndex = starredArray[nextIndexInStarred];
+        } else {
+          state.currentIndex = (state.currentIndex + 1) % state.currentOrder.length;
+        }
+        state.isChinese = true;
+      }
+      updateCard();
+    }
+
+    function prevCard() {
+      if (!state.isChinese) {
+        state.isChinese = true;
+      } else {
+        if (state.isViewingStarred && state.starred.size > 0) {
+          const starredArray = Array.from(state.starred);
+          const currentIndexInStarred = starredArray.indexOf(state.currentIndex);
+          const prevIndexInStarred = (currentIndexInStarred - 1 + starredArray.length) % starredArray.length;
+          state.currentIndex = starredArray[prevIndexInStarred];
+        } else {
+          state.currentIndex = (state.currentIndex - 1 + state.currentOrder.length) % state.currentOrder.length;
+        }
+        state.isChinese = false;
+      }
+      updateCard();
+    }
+
+    // 收藏功能
+    function toggleStar() {
+      const isCurrentlyStarred = state.starred.has(state.currentIndex);
+      
+      if (isCurrentlyStarred) {
+        if (state.isViewingStarred) {
+          state.starred.delete(state.currentIndex);
+          handleStarRemovalInStarredMode();
+        } else {
+          return;
+        }
+      } else {
+        state.starred.add(state.currentIndex);
+      }
+      
+      updateCard();
+    }
+
+    function handleStarRemovalInStarredMode() {
+      const starredArray = Array.from(state.starred);
+      
+      if (starredArray.length === 0) {
+        state.isViewingStarred = false;
+        state.currentIndex = 0;
+        updateCard();
+      } else {
+        const currentIndexInStarred = starredArray.indexOf(state.currentIndex);
+        let nextIndexInStarred;
+        
+        if (currentIndexInStarred === -1 || currentIndexInStarred >= starredArray.length - 1) {
+          nextIndexInStarred = 0;
+        } else {
+          nextIndexInStarred = currentIndexInStarred + 1;
+        }
+        
+        state.currentIndex = starredArray[nextIndexInStarred];
+      }
+    }
+
+    // 其他功能
+    function resetCards() {
+      state.reset();
+      updateCard();
+    }
+
+    function shuffleCards() {
+      state.isViewingStarred = false;
+      const shuffled = [...state.originalOrder].sort(() => Math.random() - 0.5);
+      state.currentOrder = shuffled;
+      state.currentIndex = 0;
+      state.isChinese = true;
+      updateCard();
+    }
+
+    function viewStarred() {
+      if (state.starred.size === 0) {
+        alert('还没有收藏任何短语！');
+        return;
+      }
+      
+      if (state.isViewingStarred) {
+        state.isViewingStarred = false;
+        state.currentIndex = 0;
+      } else {
+        state.isViewingStarred = true;
+        const starredArray = Array.from(state.starred);
+        state.currentIndex = starredArray[0];
+      }
+      state.isChinese = true;
+      updateCard();
+    }
+
+    // 自动播放控制
+    function startAutoPlay(frontSpeed, mode) {
+      autoPlayEngine.start(frontSpeed, mode);
+      updateButtonStates();
+      hideAllDropdowns();
+    }
+
+    function stopAutoPlay() {
+      autoPlayEngine.stop();
+      updateButtonStates();
+    }
+
+    // 卡片点击处理
+    function handleCardClick(e) {
+      stopAutoPlay();
+      
+      const card = document.getElementById('card');
+      const rect = card.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const cardWidth = rect.width;
+      
+      if (clickX < cardWidth / 2) {
+        prevCard();
+      } else {
+        nextCard();
+      }
+    }
+
+    // 跳转到指定位置
+    function jumpToPosition(percentage) {
+      let totalPhrases;
+      if (state.isViewingStarred) {
+        totalPhrases = state.starred.size;
+      } else {
+        totalPhrases = state.currentOrder.length;
+      }
+      
+      const targetIndex = Math.floor(percentage * (totalPhrases - 1));
+      
+      if (state.isViewingStarred && state.starred.size > 0) {
+        const starredArray = Array.from(state.starred);
+        state.currentIndex = starredArray[targetIndex];
+      } else {
+        state.currentIndex = targetIndex;
+      }
+      
+      state.isChinese = true;
+      updateCard();
+    }
+
+    // 进度预览功能
+    function updateProgressPreview(position, totalWidth) {
+      const percentage = position / totalWidth;
+      let totalPhrases = state.isViewingStarred ? state.starred.size : state.currentOrder.length;
+      const previewIndex = Math.floor(percentage * (totalPhrases - 1)) + 1;
+      
+      // 临时显示预览文本
+      const progressText = document.getElementById('progress');
+      progressText.dataset.original = progressText.textContent;
+      progressText.textContent = `预览: ${previewIndex} / ${totalPhrases}`;
+      progressText.style.color = 'var(--accent)';
+    }
+
+    function removeProgressPreview() {
+      const progressText = document.getElementById('progress');
+      if (progressText.dataset.original) {
+        progressText.textContent = progressText.dataset.original;
+        delete progressText.dataset.original;
+      }
+      progressText.style.color = '';
+    }
+
+    // UI控制
+    function showDropdown(dropdownId, buttonId) {
+      const dropdown = document.getElementById(dropdownId);
+      const button = document.getElementById(buttonId);
+      const rect = button.getBoundingClientRect();
+      
+      hideAllDropdowns();
+      
+      dropdown.style.display = 'block';
+      
+      const buttonCenterX = rect.left + rect.width / 2;
+      const dropdownWidth = dropdown.offsetWidth;
+      const leftPosition = buttonCenterX - dropdownWidth / 2;
+      const topPosition = rect.top - dropdown.offsetHeight - 10;
+      
+      const safeLeft = Math.max(10, Math.min(window.innerWidth - dropdownWidth - 10, leftPosition));
+      const safeTop = Math.max(10, topPosition);
+      
+      dropdown.style.left = safeLeft + 'px';
+      dropdown.style.top = safeTop + 'px';
+    }
+
+    function hideAllDropdowns() {
+      document.getElementById('speedDropdown').style.display = 'none';
+      document.getElementById('translationDropdown').style.display = 'none';
+    }
+
+    function updateButtonStates() {
+      const frontBtn = document.getElementById('autoPlayFrontBtn');
+      const bothBtn = document.getElementById('autoPlayBothBtn');
+      
+      if (state.autoPlay.enabled) {
+        if (state.autoPlay.mode === 'front') {
+          frontBtn.innerHTML = '<div class="btn-content"><span class="btn-icon pause-icon">❚❚</span></div>';
+          bothBtn.innerHTML = '<div class="btn-content"><span class="btn-icon auto-play-icon">▷▷</span></div>';
+          frontBtn.classList.add('active');
+          bothBtn.classList.remove('active');
+        } else {
+          frontBtn.innerHTML = '<div class="btn-content"><span class="btn-icon auto-play-icon">▷</span></div>';
+          bothBtn.innerHTML = '<div class="btn-content"><span class="btn-icon pause-icon">❚❚</span></div>';
+          frontBtn.classList.remove('active');
+          bothBtn.classList.add('active');
+        }
+      } else {
+        frontBtn.innerHTML = '<div class="btn-content"><span class="btn-icon auto-play-icon">▷</span></div>';
+        bothBtn.innerHTML = '<div class="btn-content"><span class="btn-icon auto-play-icon">▷▷</span></div>';
+        frontBtn.classList.remove('active');
+        bothBtn.classList.remove('active');
+      }
+    }
+
+    // 缩放功能
+    function setZoom(level) {
+      state.zoomLevel = Math.max(0.5, Math.min(2, level));
+      document.getElementById('appContainer').style.transform = `scale(${state.zoomLevel})`;
+      document.getElementById('zoomIndicator').textContent = `${Math.round(state.zoomLevel * 100)}%`;
+    }
+
+    function zoomIn() {
+      setZoom(state.zoomLevel + 0.1);
+    }
+
+    function zoomOut() {
+      setZoom(state.zoomLevel - 0.1);
+    }
+
+    // 进度条滑块拖动功能 - 优化版本
+    function setupSliderDrag() {
+      const sliderContainer = document.getElementById('progressSliderContainer');
+      const slider = document.getElementById('progressSlider');
+      const progressBar = document.getElementById('progressBar');
+      let isDragging = false;
+      
+      // 鼠标事件
+      sliderContainer.addEventListener('mousedown', startDrag);
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('mouseup', stopDrag);
+      
+      // 触摸事件
+      sliderContainer.addEventListener('touchstart', startDrag);
+      document.addEventListener('touchmove', drag);
+      document.addEventListener('touchend', stopDrag);
+      
+      // 进度条点击事件
+      progressBar.addEventListener('click', handleProgressBarClick);
+      progressBar.addEventListener('touchstart', handleProgressBarClick);
+      
+      // 添加触摸激活状态
+      sliderContainer.addEventListener('touchstart', function(e) {
+        slider.classList.add('active');
+      });
+      
+      sliderContainer.addEventListener('touchend', function(e) {
+        slider.classList.remove('active');
+      });
+
+      sliderContainer.addEventListener('touchcancel', function(e) {
+        slider.classList.remove('active');
+      });
+      
+      function startDrag(e) {
+        e.preventDefault();
+        isDragging = true;
+        slider.classList.add('dragging');
+        stopAutoPlay();
+        slider.style.transition = 'none';
+        
+        // 触觉反馈
+        if (navigator.vibrate) navigator.vibrate(20);
+        
+        // 立即更新位置
+        updateSliderPositionFromEvent(e);
+      }
+      
+      function drag(e) {
+        if (!isDragging) return;
+        
+        e.preventDefault();
+        updateSliderPositionFromEvent(e);
+      }
+      
+      function stopDrag(e) {
+        if (!isDragging) return;
+        
+        isDragging = false;
+        slider.classList.remove('dragging');
+        slider.style.transition = 'left 0.3s ease, transform 0.2s ease';
+        
+        removeProgressPreview();
+        
+        updateSliderPositionFromEvent(e, true);
+      }
+      
+      function updateSliderPositionFromEvent(e, final = false) {
+        const progressBarRect = progressBar.getBoundingClientRect();
+        const progressBarWidth = progressBarRect.width;
+        
+        let clientX;
+        if (e.type.includes('touch')) {
+          clientX = e.touches ? e.touches[0].clientX : e.changedTouches[0].clientX;
+        } else {
+          clientX = e.clientX;
+        }
+        
+        let position = clientX - progressBarRect.left;
+        position = Math.max(0, Math.min(progressBarWidth, position));
+        
+        slider.style.left = `${position}px`;
+        
+        if (!final) {
+          // 实时更新预览
+          updateProgressPreview(position, progressBarWidth);
+        } else {
+          // 最终确定位置
+          const percentage = position / progressBarWidth;
+          jumpToPosition(percentage);
+        }
+      }
+      
+      function handleProgressBarClick(e) {
+        if (isDragging) return;
+        
+        stopAutoPlay();
+        
+        const progressBarRect = progressBar.getBoundingClientRect();
+        const progressBarWidth = progressBarRect.width;
+        
+        let clientX;
+        if (e.type === 'touchstart') {
+          clientX = e.touches[0].clientX;
+        } else {
+          clientX = e.clientX;
+        }
+        
+        let position = clientX - progressBarRect.left;
+        position = Math.max(0, Math.min(progressBarWidth, position));
+        
+        const percentage = position / progressBarWidth;
+        jumpToPosition(percentage);
+      }
+    }
+
+    // 应用初始化
+    function init() {
+      console.log('开始初始化应用...');
+      
+      // 绑定基本按钮事件
+      document.getElementById('prevBtn').addEventListener('click', function() { 
+        stopAutoPlay(); 
+        prevCard(); 
+      });
+      
+      document.getElementById('nextBtn').addEventListener('click', function() { 
+        stopAutoPlay(); 
+        nextCard(); 
+      });
+      
+      document.getElementById('resetBtn').addEventListener('click', function() { 
+        stopAutoPlay(); 
+        resetCards(); 
+      });
+      
+      document.getElementById('shuffleBtn').addEventListener('click', function() { 
+        stopAutoPlay(); 
+        shuffleCards(); 
+      });
+      
+      document.getElementById('starBtn').addEventListener('click', function() { 
+        stopAutoPlay(); 
+        toggleStar(); 
+      });
+      
+      document.getElementById('bookmarksBtn').addEventListener('click', function() { 
+        stopAutoPlay(); 
+        viewStarred(); 
+      });
+      
+      // 卡片点击事件
+      document.getElementById('card').addEventListener('click', handleCardClick);
+      
+      // 收藏星标点击事件
+      document.getElementById('star').addEventListener('click', function(e) { 
+        e.stopPropagation(); 
+        stopAutoPlay();
+        toggleStar(); 
+      });
+
+      // 自动播放按钮
+      document.getElementById('autoPlayFrontBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (state.autoPlay.enabled && state.autoPlay.mode === 'front') {
+          stopAutoPlay();
+        } else {
+          showDropdown('speedDropdown', 'autoPlayFrontBtn');
+        }
+      });
+
+      document.getElementById('autoPlayBothBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (state.autoPlay.enabled && state.autoPlay.mode === 'both') {
+          stopAutoPlay();
+        } else {
+          showDropdown('translationDropdown', 'autoPlayBothBtn');
+        }
+      });
+
+      // 下拉菜单选项
+      document.querySelectorAll('#speedDropdown .dropdown-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const speed = parseInt(this.dataset.speed);
+          startAutoPlay(speed, 'front');
+        });
+      });
+
+      document.querySelectorAll('#translationDropdown .dropdown-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const frontSpeed = parseInt(this.dataset.frontSpeed);
+          startAutoPlay(frontSpeed, 'both');
+        });
+      });
+
+      // 缩放按钮
+      document.getElementById('zoomInBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        zoomIn();
+      });
+      
+      document.getElementById('zoomOutBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        zoomOut();
+      });
+
+      // 设置滑块拖动功能
+      setupSliderDrag();
+
+      // 全局点击隐藏下拉菜单
+      document.addEventListener('click', hideAllDropdowns);
+
+      // 初始状态
+      updateCard();
+      updateButtonStates();
+
+      console.log('应用初始化完成！总卡片数:', englishPhrases.length);
+    }
+
+    // 启动应用
+    window.addEventListener('load', init);
+  </script>
+</body>
+</html>
